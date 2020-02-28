@@ -58,6 +58,22 @@ func handleConn(conn net.Conn) {
 	}
 
 	method, request, protocol := parts[0], parts[1], parts[2]
+	//if strings.Contains(request,"?download"){
+	//	writer := bufio.NewWriter(conn)
+	//	bytes, err := ioutil.ReadFile("http/img/")
+	//	_, _ = writer.WriteString("HTTP/1.1 200 OK\r\n")
+	//	_, _ = writer.WriteString(fmt.Sprintf("Content-Length: %d\r\n", len(bytes)))
+	//	_, _ = writer.WriteString("Content-Type: application/octet-stream\r\n")
+	//	_, _ = writer.WriteString("Connection: Close\r\n")
+	//	_, _ = writer.WriteString("\r\n")
+	//	_, _ = writer.Write(bytes)
+	//	err = writer.Flush()
+	//	if err != nil {
+	//		log.Printf("can't sent response: %v", err)
+	//	}
+	//	log.Printf("response on: %s", request)
+	//	return
+	//}
 	if method == "GET" && request == "/" && protocol == "HTTP/1.1" {
 		writer := bufio.NewWriter(conn)
 		bytes, err := ioutil.ReadFile("http/files/file.html")
@@ -74,12 +90,16 @@ func handleConn(conn net.Conn) {
 		log.Printf("response on: %s", request)
 	}
 
-	if method == "GET" && request == "/html.html" && protocol == "HTTP/1.1" {
+	if method == "GET" && (request == "/html.html" || request == "/html.html?download" ) && protocol == "HTTP/1.1" {
+		content:="text/html"
+		if strings.Contains(request,"?download"){
+			content = "application/octet-stream"
+		}
 		writer := bufio.NewWriter(conn)
 		bytes, err := ioutil.ReadFile("http/files/html.html")
 		_, _ = writer.WriteString("HTTP/1.1 200 OK\r\n")
 		_, _ = writer.WriteString(fmt.Sprintf("Content-Length: %d\r\n", len(bytes)))
-		_, _ = writer.WriteString("Content-Type: text/html\r\n")
+		_, _ = writer.WriteString("Content-Type: "+ content+"\r\n")
 		_, _ = writer.WriteString("Connection: Close\r\n")
 		_, _ = writer.WriteString("\r\n")
 		_, _ = writer.Write(bytes)
@@ -90,12 +110,16 @@ func handleConn(conn net.Conn) {
 		log.Printf("response on: %s", request)
 	}
 
-	if method == "GET" && request == "/2.png" && protocol == "HTTP/1.1" {
+	if method == "GET" && (request == "/2.png" || request == "/2.png?download" ) && protocol == "HTTP/1.1" {
+		content:="image/png"
+		if strings.Contains(request,"?download"){
+			content = "application/octet-stream"
+		}
 		writer := bufio.NewWriter(conn)
 		bytes, err := ioutil.ReadFile("http/img/2.png")
 		_, _ = writer.WriteString("HTTP/1.1 200 OK\r\n")
 		_, _ = writer.WriteString(fmt.Sprintf("Content-Length: %d\r\n", len(bytes)))
-		_, _ = writer.WriteString("Content-Type: image/png\r\n")
+		_, _ = writer.WriteString("Content-Type: "+ content+"\r\n")
 		_, _ = writer.WriteString("Connection: Close\r\n")
 		_, _ = writer.WriteString("\r\n")
 		_, _ = writer.Write(bytes)
@@ -106,12 +130,16 @@ func handleConn(conn net.Conn) {
 		log.Printf("response on: %s", request)
 	}
 
-	if method == "GET" && request == "/1.jpg" && protocol == "HTTP/1.1" {
+	if method == "GET" && (request == "/1.jpg" || request == "/1.jpg?download" )  && protocol == "HTTP/1.1" {
+		content:="image/jpg"
+		if strings.Contains(request,"?download"){
+			content = "application/octet-stream"
+		}
 		writer := bufio.NewWriter(conn)
 		bytes, err := ioutil.ReadFile("http/img/1.jpg")
 		_, _ = writer.WriteString("HTTP/1.1 200 OK\r\n")
 		_, _ = writer.WriteString(fmt.Sprintf("Content-Length: %d\r\n", len(bytes)))
-		_, _ = writer.WriteString("Content-Type: image/jpg\r\n")
+		_, _ = writer.WriteString("Content-Type: "+ content+"\r\n")
 		_, _ = writer.WriteString("Connection: Close\r\n")
 		_, _ = writer.WriteString("\r\n")
 		_, _ = writer.Write(bytes)
@@ -122,12 +150,16 @@ func handleConn(conn net.Conn) {
 		log.Printf("response on: %s", request)
 	}
 
-	if method == "GET" && request == "/text.txt" && protocol == "HTTP/1.1" {
+	if method == "GET" && (request == "/text.txt" || request=="/text.txt?download") && protocol == "HTTP/1.1" {
+		content:="text/html"
+		if strings.Contains(request,"?download"){
+			content = "application/octet-stream"
+		}
 		writer := bufio.NewWriter(conn)
 		bytes, err := ioutil.ReadFile("http/files/text.txt")
 		_, _ = writer.WriteString("HTTP/1.1 200 OK\r\n")
 		_, _ = writer.WriteString(fmt.Sprintf("Content-Length: %d\r\n", len(bytes)))
-		_, _ = writer.WriteString("Content-Type: text/html\r\n")
+		_, _ = writer.WriteString("Content-Type: "+ content+"\r\n")
 		_, _ = writer.WriteString("Connection: Close\r\n")
 		_, _ = writer.WriteString("\r\n")
 		_, _ = writer.Write(bytes)
@@ -138,12 +170,16 @@ func handleConn(conn net.Conn) {
 		log.Printf("response on: %s", request)
 	}
 
-	if method == "GET" && request == "/html.pdf" && protocol == "HTTP/1.1" {
+	if method == "GET" && (request == "/html.pdf" || request=="/html.pdf?download") && protocol == "HTTP/1.1" {
+		content:="application/pdf"
+		if strings.Contains(request,"?download"){
+			content = "application/octet-stream"
+		}
 		writer := bufio.NewWriter(conn)
 		bytes, err := ioutil.ReadFile("http/files/html.pdf")
 		_, _ = writer.WriteString("HTTP/1.1 200 OK\r\n")
 		_, _ = writer.WriteString(fmt.Sprintf("Content-Length: %d\r\n", len(bytes)))
-		_, _ = writer.WriteString("Content-Type: application/pdf\r\n")
+		_, _ = writer.WriteString("Content-Type: "+ content+"\r\n")
 		_, _ = writer.WriteString("Connection: Close\r\n")
 		_, _ = writer.WriteString("\r\n")
 		_, _ = writer.Write(bytes)
