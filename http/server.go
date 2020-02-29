@@ -22,8 +22,18 @@ func main() {
 		}
 	}()
 	log.SetOutput(file)
-	const address = "0.0.0.0:9999"
+    host:="0.0.0.0"
+	port, ok := os.LookupEnv("PORT")
+	if !ok{
+		port="9999"
+	}
+	err= start(fmt.Sprintf("%s:%s", host, port))
+	if err != nil {
+		log.Fatal(err)
+	}
 	log.Print("server starting")
+}
+func start(address string)(err error)  {
 	listener, err := net.Listen("tcp", address)
 	if err != nil {
 		log.Fatalf("can't listen on %s: %v", address, err)
@@ -38,7 +48,6 @@ func main() {
 		handleConn(conn)
 	}
 }
-
 func handleConn(conn net.Conn) {
 	defer func() {
 		err := conn.Close()

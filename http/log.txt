@@ -3492,3 +3492,37 @@
 2020/02/28 21:38:39 GET /favicon.ico HTTP/1.1
 2020/02/28 21:38:39 GET /favicon.ico HTTP/1.1
 2020/02/28 21:38:39 GET /favicon.ico HTTP/1.1
+2020/02/29 15:38:19 server starting
+2020/02/29 15:39:33 server starting
+2020/02/29 15:39:40 GET / HTTP/1.1
+2020/02/29 15:39:40 response on: /
+2020/02/29 15:39:41 GET /favicon.ico HTTP/1.1
+2020/02/29 15:39:41 GET /favicon.ico HTTP/1.1
+2020/02/29 15:39:41 GET /favicon.ico HTTP/1.1
+2020/02/29 15:39:53 GET /html.pdf HTTP/1.1
+2020/02/29 15:39:54 response on: /html.pdf
+2020/02/29 15:39:54 GET /favicon.ico HTTP/1.1
+2020/02/29 15:39:54 GET /favicon.ico HTTP/1.1
+2020/02/29 16:03:38 GET / HTTP/1.1
+2020/02/29 16:03:38 response on: /
+2020/02/29 16:03:40 GET /favicon.ico HTTP/1.1
+2020/02/29 16:03:40 GET /favicon.ico HTTP/1.1
+2020/02/29 16:03:40 GET /favicon.ico HTTP/1.1
+2020/02/29 16:20:11 GET / HTTP/1.1
+2020/02/29 16:20:11 response on: /
+2020/02/29 16:20:12 GET /favicon.ico HTTP/1.1
+2020/02/29 16:20:12 GET /favicon.ico HTTP/1.1
+2020/02/29 16:20:12 GET /favicon.ico HTTP/1.1
+2020/02/29 16:21:03 GET /text.txt HTTP/1.1
+2020/02/29 16:21:03 response on: /text.txt
+2020/02/29 16:21:03 GET /favicon.ico HTTP/1.1
+2020/02/29 16:21:03 GET /favicon.ico HTTP/1.1
+2020/02/29 16:21:03 GET /favicon.ico HTTP/1.1
+2020/02/29 16:24:20 can't read EOF
+2020/02/29 16:24:20 
+2020/02/29 16:24:20 can't read EOF
+2020/02/29 16:24:20 
+2020/02/29 16:25:22 can't read EOF
+2020/02/29 16:25:22 
+2020/02/29 16:25:22 can't read EOF
+2020/02/29 16:25:22 
